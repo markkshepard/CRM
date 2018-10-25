@@ -155,16 +155,24 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\CRMCombinedModels.cs" />
     <Compile Include="Models\CRMEntityModels.cs" />
     <Compile Include="Models\CRMGoalEntityModels.cs" />
+    <Compile Include="Models\CRMInventoryScanningModel.cs" />
+    <Compile Include="Models\CRMOptionSetsModels.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\CRMAccountServices.cs" />
     <Compile Include="Services\CRMContactServices.cs" />
     <Compile Include="Services\CRMGoalsServices.cs" />
+    <Compile Include="Services\CRMInventoryScanningServices.cs" />
     <Compile Include="Services\CRMNewRelationsipServices.cs" />
+    <Compile Include="Services\CRMOptionSetServices.cs" />
+    <Compile Include="Services\CRMSalesHierarchyServices.cs" />
+    <Compile Include="Services\CRMStateServices.cs" />
     <Compile Include="Services\CRMSystemUserServices.cs" />
     <Compile Include="Services\CRMTeamMembershipServices.cs" />
     <Compile Include="Services\CRMTeamsServices.cs" />
+    <Compile Include="Services\CRMUtilityServices.cs" />
     <Compile Include="Services\DatabaseServices.cs" />
   </ItemGroup>
   <ItemGroup>

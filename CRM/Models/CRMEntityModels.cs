@@ -34,6 +34,7 @@ namespace CRM.Models
         public string CSI_FacilityName { get; set; }
         public string OwnerID { get; set; }
         public string New_DSM2 { get; set; }
+        public string Name { get; set; }
     }
 
     public class CRMNewRelationshipModel
@@ -47,5 +48,19 @@ namespace CRM.Models
     {
         public string Id { get; set; }
         public string ContactName { get; set; }
+        public string FirstName { get; set; }
+        public string LastName { get; set; }
+        public string StateID { get; set; }
+        public string SpecialtyID { get; set; }
+        public string EMAIL { get; set; }
+        public string NPI { get; set; }
+        public string AccountID { get; set; }
+
+    }
+
+    public class CRMStateModel
+    {
+        public string StateID { get; set; }
+        public string StateName { get; set; }
     }
 }

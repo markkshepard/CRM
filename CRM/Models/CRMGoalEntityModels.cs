@@ -39,4 +39,27 @@ namespace CRM.Models
         public string CSI_Name { get; set; }
         public int CSI_SortOrder { get; set; }
     }
+
+    public class CRMGoalModel
+    {
+        public DateTime CSI_AdjEstimatedCompletion { get; set; }
+        public string CSI_GoalCategoryGUID { get; set; }
+        public int CSI_GoalCategoryID { get; set; }
+        public string CSI_GoalGUID { get; set; }
+        public int CSI_GoalIdentifier { get; set; }
+        public string CSI_GoalsID { get; set; }
+        public string CSI_GoalStatusGUID { get; set; }
+        public int CSI_StatusID { get; set; }
+        public string CSI_GoalTimelineGUID { get; set; }
+        public int CSI_GoalTimelineID { get; set; }
+        public string CSI_GrowthDriverGUID { get; set; }
+        public int CSI_GrowthDriverID { get; set; }
+        public string CSI_Name { get; set; }
+        public DateTime CSI_OrigEstimatedCompletion { get; set; }
+        public bool CSI_RegionalFocus { get; set; }
+        public string CSI_SMARTGoal { get; set; }
+        public string CSI_TeamIDGUID { get; set; }
+        public string CreatedBy { get; set; }
+        public DateTime CreatedOn { get; set; }
+    }
 }
