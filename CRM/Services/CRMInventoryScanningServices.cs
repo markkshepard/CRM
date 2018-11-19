@@ -91,6 +91,7 @@ namespace CRM.Services
                         if (entityRecords[i].Contains("createdon") && entityRecords[i]["createdon"] != null)
                         {
                             entityModel.CreatedDate = Convert.ToDateTime(entityRecords[i]["createdon"]);
+                            entityModel.CreatedDateString = entityModel.CreatedDate.ToString("yyyy/MM/dd");
                         }
                         if (entityRecords[i].Contains("po_inventoryscanid") && entityRecords[i]["po_inventoryscanid"] != null)
                         {
@@ -113,6 +114,11 @@ namespace CRM.Services
                             entityModel.AccountID = accountRef.Id.ToString();
                             entityModel.AccountName = accountRef.Name.ToString();
                             //entityModel = entityRecords[i]["new_dsm2"].ToString();
+                        }
+                        else
+                        {
+                            entityModel.AccountID = "";
+                            entityModel.AccountName = "";
                         }
                         entityModel.ScanStatus = i % 4;
 

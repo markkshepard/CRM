@@ -16,6 +16,7 @@ namespace CRM.Models
         public string ScanName { get; set; }
         public string TerritoryTeam { get; set; }
         public DateTime CreatedDate { get; set; }
+        public string CreatedDateString { get; set; }
         public string CreatedBy { get; set; }
         public string OwnerID { get; set; }
         public string OwnerName { get; set; }
