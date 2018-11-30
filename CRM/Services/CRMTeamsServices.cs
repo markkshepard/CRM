@@ -122,5 +122,72 @@ namespace CRM.Services
             }
             return teamActive;
         }
+
+        public static List<CRMTeamMembershipModel> CRMGetAllMyTeamsService(string id)
+        {
+            List<CRMTeamMembershipModel> myTeams = new List<CRMTeamMembershipModel>();
+
+            // first read in own team
+            myTeams = GetTeamsIAmOnService(id);
+            // next add on any team for RSM
+            myTeams.AddRange(GetTeamsIAmAnRSMService(id));
+            // finally look at AVP
+            myTeams.AddRange(GetTeamsIAmAnAVPService(id));
+            // Ensure that only one team id is in list
+            // Otherwise you could end up with duplicate goal records
+            List<CRMTeamMembershipModel> dupFree = myTeams.GroupBy(x => x.TeamName)
+                                                    .Select(g => g.First()).ToList();
+
+            // return dup results
+            return dupFree;
+        }
+
+        private static List<CRMTeamMembershipModel> GetTeamsIAmOnService(string id)
+        {
+            List<CRMTeamMembershipModel> crmTeams = new List<CRMTeamMembershipModel>();
+            crmTeams = CRMTeamMembershipServices.GetCRMTeamMembershipsService(id);
+
+            return crmTeams;
+        }
+
+        private static List<CRMTeamMembershipModel> GetTeamsIAmAnRSMService(string id)
+        {
+            List<CRMTeamMembershipModel> myTeams = new List<CRMTeamMembershipModel>();
+            CRMTeamMembershipModel aTeam = new CRMTeamMembershipModel();
+
+            List<CRMSalesHierarchyModel> theHier = new List<CRMSalesHierarchyModel>();
+            theHier = CRMSalesHierarchyServices.CRMGetSalesHierarchyForRSMService(id);
+
+            foreach (var row in theHier)
+            {
+                aTeam.TeamId = row.SalesTeamID;
+                aTeam.TeamName = row.SalesTeamName;
+
+                myTeams.Add(aTeam);
+                aTeam = new CRMTeamMembershipModel();
+            }
+
+            return myTeams;
+        }
+
+        private static List<CRMTeamMembershipModel> GetTeamsIAmAnAVPService(string id)
+        {
+            List<CRMTeamMembershipModel> myTeams = new List<CRMTeamMembershipModel>();
+            CRMTeamMembershipModel aTeam = new CRMTeamMembershipModel();
+
+            List<CRMSalesHierarchyModel> theHier = new List<CRMSalesHierarchyModel>();
+            theHier = CRMSalesHierarchyServices.CRMGetSalesHierarchyForAVPService(id);
+
+            foreach (var row in theHier)
+            {
+                aTeam.TeamId = row.SalesTeamID;
+                aTeam.TeamName = row.SalesTeamName;
+
+                myTeams.Add(aTeam);
+                aTeam = new CRMTeamMembershipModel();
+            }
+
+            return myTeams;
+        }
     }
 }
